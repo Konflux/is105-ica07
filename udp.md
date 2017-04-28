@@ -1,4 +1,16 @@
-## UDP packet
+# UDP pakker
+
+## Lokal UDP pakke
+Dette er et eksempel på en UDP-pakke sendt innen lokal node.
+```
+# TODO
+```
+
+---
+
+## UDP pakke over nettverk
+Dette er et eksempel på en UDP-pakke sendt over nettverket.
+
 ```
 0000   14 2d 27 6e 56 d1 44 1c a8 4e 01 a3 08 00 45 00
 0010   00 38 56 38 00 00 80 11 82 77 0a e4 22 96 0a e4
