@@ -9,6 +9,11 @@ Dette er et eksempel på en UDP-pakke sendt innen lokal node.
 ---
 
 ## UDP pakke over nettverk
+
+Wireshark-filter: `ip.host == 10.228.41.168`
+
+Man kan også legge inn et filter for protokoll: `ip.proto == "UDP"`
+
 Dette er et eksempel på en UDP-pakke sendt over nettverket.
 
 ```
@@ -18,6 +23,8 @@ Dette er et eksempel på en UDP-pakke sendt over nettverket.
 0030   46 72 20 35 2e 35 20 31 34 3a 34 35 20 46 6c c3
 0040   a5 6b 6c 79 70 61
 ```
+
+I eksempelet er header-lengden 42 bytes lang. Hele pakken er 70 bytes lang, og dermed utgjør headeren 60% av pakken. Headeren øker ikke i noen grad dersom dataen er lengre.
 
 ### Ethernet II Header
 ```
@@ -29,7 +36,7 @@ Dette er et eksempel på en UDP-pakke sendt over nettverket.
 ### IPv4 Header
 ```
 [45]                 0100 (IPv4 versjon 4)
-                     0101 (IPv4 header length (20 bytes: 5?)
+                     0101 (IPv4 header length (5*32 bits == 160 bits == 20 bytes)
 [00]                 0000 00 - Differentiated Services Codepoint: Default (0)
                      00 - Explicit Congestion Notification: Not ECN-Capable Transport (0)
 [00 38]              Total length (56 = IPv4 header + UDP header + data)
