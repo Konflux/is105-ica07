@@ -1,6 +1,6 @@
-# UDP pakker
+# UDP-pakker
 
-## Lokal UDP pakke
+## Lokal UDP-pakke
 Dette er et eksempel på en UDP-pakke sendt innen lokal node.
 ```
 # TODO
@@ -8,11 +8,13 @@ Dette er et eksempel på en UDP-pakke sendt innen lokal node.
 
 ---
 
-## UDP pakke over nettverk
+## UDP-pakke over nettverk
 
 Wireshark-filter: `ip.host == 10.228.41.168`
 
-Man kan også legge inn et filter for protokoll: `ip.proto == "UDP"`
+Man kan også legge inn et filter for protokoll: `ip.proto == "UDP"`, men
+ettersom at ingen andre forespørsler sendes til den addressen, er det nok med kun
+`ip.addr`-filteret
 
 Dette er et eksempel på en UDP-pakke sendt over nettverket.
 
@@ -24,7 +26,7 @@ Dette er et eksempel på en UDP-pakke sendt over nettverket.
 0040   a5 6b 6c 79 70 61
 ```
 
-I eksempelet er header-lengden 42 bytes lang. Hele pakken er 70 bytes lang, og dermed utgjør headeren 60% av pakken. Headeren øker ikke i noen grad dersom dataen er lengre.
+I eksempelet er header-lengden 42 bytes lang. Hele pakken er 70 bytes lang, og dermed utgjør headeren 60% av pakken. Headeren øker ikke i noen grad dersom dataen er lengre, og vil derfor utgjøre en mindre prosent i det tilfellet.
 
 ### Ethernet II Header
 ```
@@ -53,7 +55,7 @@ I eksempelet er header-lengden 42 bytes lang. Hele pakken er 70 bytes lang, og d
 [0a e4 29 a8]        Destination
 ```
 
-### User Datagram Protocol
+### User Datagram Protocol header
 
 ```
 [cb bd]              Source port (52157)
