@@ -20,7 +20,7 @@ func main() {
   println("Listening on port " + port)
 
   for {
-    buf := make([]byte, 1024)
+    buf := make([]byte, 2048)
     // ReadFromUDP blokkerer tråden til en melding kommer inn
     // og putter data inn i buf, samt returnerer en read length som vi bruker
     // senere
