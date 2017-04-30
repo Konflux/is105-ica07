@@ -1,5 +1,4 @@
 
 # is105-ica07
-# hei dette skulle vaert en oppskrift pA hva udp-greiene gjQr.
- :bowtie:
-:100: :100: :100: :bangbang:
+
+* [Dokumentasjon](https://github.com/crippling-depression/mappeinnlevering/blob/master/ICA07.md)
