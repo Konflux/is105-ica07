@@ -34,5 +34,5 @@ func handleConnection(conn net.Conn) {
 		println(msg)
 
 		// Send returmelding
-		conn.Write([]byte("Affirmative: " + msg))
+		//conn.Write([]byte("Affirmative: " + msg))
 }

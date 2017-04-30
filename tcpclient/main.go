@@ -16,10 +16,10 @@ func main ()  {
   conn.Write([]byte("Møte Fr 5.5 14:45 Flåklypa"))
 
   // Vi vil også lese en melding vi får i retur
-  buf := make([]byte, 1024)
+  //buf := make([]byte, 1024)
   // conn.Read() vil i dette tilfellet alltid lese over EOF og få feil, så
   // vi hopper over errorhandling her.
-  n, _ := conn.Read(buf)
+  //n, _ := conn.Read(buf)
 
-  println(string(buf[:n]))
+  //println(string(buf[:n]))
 }
