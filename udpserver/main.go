@@ -2,34 +2,35 @@ package main
 
 import (
   "net"
-  "log"
+  "../check"
 )
 
-func check(err error) {
-  if err != nil {
-    log.Fatal(err)
-  }
-}
+
 
 func main() {
   port := "16384" // Porten vi ønsker at serveren skal høre etter UDP-pakker
-  log.Printf("Starting server, listening on port %s\n", port )
   // Vi hører på alle innkommende forespørsler ved å si at vi hører på
   // :16384.
   addr, err := net.ResolveUDPAddr("udp", ":" + port)
-  check(err)
+  check.Check(err)
   // Åpne en UDP socket
   sock, err := net.ListenUDP("udp", addr)
-  check(err)
+  check.Check(err)
+
+  println("Listening on port " + port)
 
   for {
     buf := make([]byte, 1024)
     // ReadFromUDP blokkerer tråden til en melding kommer inn
     // og putter data inn i buf, samt returnerer en read length som vi bruker
     // senere
-    rlen, _, err := sock.ReadFromUDP(buf)
-    check(err)
-    // Vi printer ut buffer fra 0 til read length, og ikke lengre enn det.
-    log.Println(string(buf[0:rlen]))
+    rlen, addr, err := sock.ReadFromUDP(buf)
+    check.Check(err)
+    // Vi lagrer bufferet fra 0 til read length, som string.
+    msg := string(buf[0:rlen])
+    println(msg)
+
+    // Vi sender tilbake en godkjenningsmelding
+    sock.WriteToUDP([]byte("Affirmative: " + msg), addr)
   }
 }

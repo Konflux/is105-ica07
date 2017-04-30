@@ -2,32 +2,37 @@ package main
 
 import (
 	"net"
-	"log"
+	"../check"
 )
 
 func main() {
-	l, err := net.Listen("tcp", ":16385")
-	if err != nil {
-		log.Fatal(err)
-	}
+	port := "16385"
+	l, err := net.Listen("tcp", ":" + port)
+	check.Check(err)
 	defer l.Close()
+	println("Listening on port " + port)
 	for {
 		c, err := l.Accept()
-		if err!= nil {
-			log.Fatal(err)
-		}
+		check.Check(err)
 		go handleConnection(c)
 	}
 }
 
-func handleConnection(c net.Conn) {
-    //some code...
-    
-    //Simple read from connection
+
+
+func handleConnection(conn net.Conn) {
+    defer conn.Close()
+
+    // Les data fra tilkoblingen inn i buffer
     buffer := make([]byte, 1024)
-	  rlen, err := c.Read(buffer)
-		if err != nil {
-			log.Fatal(err)
-		}
-		log.Println(string(buffer[0:rlen]))
+		 // rlen vil ha informasjon om hvor langt den har lest
+	  rlen, err := conn.Read(buffer)
+		check.Check(err)
+
+		// Vi gjør bufferdata om til en string
+		msg := string(buffer[0:rlen])
+		println(msg)
+
+		// Send returmelding
+		conn.Write([]byte("Affirmative: " + msg))
 }
