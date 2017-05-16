@@ -1,5 +1,9 @@
 # ICA 07, nettverkslag og protokoller
 
+**Gruppe 4: Crippling Depression**
+
+Brage Sydskogen, Martin Hovet, Tønnes Røren, Marius Kaurin, Kent Daleng, Stian Simonsen
+
 ## Innhold
 
 * [Wireshark](#wireshark)
@@ -239,4 +243,4 @@ Løsningen vår gjøres med følgende 4-stegs prosess over nettverket.
 5. Klient sender kryptert melding
   * Server bruker nonce og sharedKey for å dekryptere meldingen
 
-Det skal påpekes at UDP er ikke særlig robust til akkurat dette, siden hele prosessen avhenger på at alle pakker mottas, og i riktig rekkefølge. På grunn av tidsmessige årsaker har vi ikke implementert signatursjekk eller noen slags sjekk for dataintegritet.
+Det skal påpekes at UDP er ikke særlig robust til akkurat dette, siden hele prosessen avhenger på at alle pakker mottas, og i riktig rekkefølge.
